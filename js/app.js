@@ -17,21 +17,21 @@ var Calculadora = {
     var resultado = document.getElementById("display");
     var teclaOn = document.getElementById("on");
     var teclaSigno = document.getElementById("sign");
-    var teclaRaiz = document.getElementById("raiz");
-    var teclaDivide = document.getElementById("dividido");
     var teclaSiete = document.getElementById("7");
     var teclaOcho = document.getElementById("8");
     var teclaNueve = document.getElementById("9");
-    var teclaPor = document.getElementById("por");
     var teclaCuatro = document.getElementById("4");
     var teclaCinco = document.getElementById("5");
     var teclaSeis = document.getElementById("6");
-    var teclaMenos = document.getElementById("menos");
     var teclaUno = document.getElementById("1");
     var teclaDos = document.getElementById("2");
     var teclaTres = document.getElementById("3");
     var teclaCero = document.getElementById("0");
     var teclaPunto = document.getElementById("punto");
+    var teclaRaiz = document.getElementById("raiz");
+    var teclaDivide = document.getElementById("dividido");
+    var teclaPor = document.getElementById("por");
+    var teclaMenos = document.getElementById("menos");
     var teclaIgual = document.getElementById("igual");
     var teclaMas = document.getElementById("mas");
 
@@ -40,7 +40,7 @@ var Calculadora = {
     teclaPunto.addEventListener('click', function(){
       if(resultado.textContent === "0"){
         resultado.textContent += ".";
-      }else if(resultado.textContent.indexOf(".")!=-1){ //El método indexOf() cadena.indexOf(valorBusqueda[, indiceDesde]) devuelve el índice, dentro del objeto String que realiza la llamada, de la primera ocurrencia del valor especificado, comenzando la búsqueda desde indiceDesde; o -1 si no se encuentra dicho valor.
+      }else if(resultado.textContent.indexOf(".")!=-1){ //El método indexOf() cadena.indexOf(valorBusqueda[, indiceDesde]) devuelve el índice, dentro del objeto String que realiza la llamada, de la primera ocurrencia del valor especificado, comenzando la búsqueda desde indiceDesde; o devuelve -1 si no se encuentra dicho valor.
         resultado.textContent += "";
       }else{
         resultado.textContent += ".";
@@ -125,11 +125,100 @@ var Calculadora = {
       resultado.textContent = -resultado.textContent;
     })
 
+    var operandoA = "";
+    var operandoB = "";
+    var operacion = "";
+    var resultadoTemp = resultado.textContent;
+
+    teclaMas.addEventListener('click', function(){
+      if (resultado.textContent != "0") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+        operacion = "mas";
+      }
+    })
+    teclaMenos.addEventListener('click', function(){
+      if (resultado.textContent != "0") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+        operacion = "menos";
+      }
+    })
+    teclaPor.addEventListener('click', function(){
+      if (resultado.textContent != "0") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+        operacion = "por";
+      }
+    })
+    teclaDivide.addEventListener('click', function(){
+      if (resultado.textContent != "0") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+        operacion = "dividir";
+      }
+    })
+
+    teclaIgual.addEventListener('click', function(){
+      if (resultado.textContent === "0") {
+        resultado.textContent = "0";
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "mas") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) + Number(operandoB);
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "mas") {
+        resultado.textContent = Number(resultado.textContent) + Number(operandoB);
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "menos") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) - Number(operandoB);
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "menos") {
+        resultado.textContent = Number(resultado.textContent) - Number(operandoB);
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "por") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) * Number(operandoB);
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "por") {
+        resultado.textContent = Number(resultado.textContent) * Number(operandoB);
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "dividir") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) / Number(operandoB);
+      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "dividir") {
+        resultado.textContent = Number(resultado.textContent) / Number(operandoB);
+      }
+
+    })
+
   },
+
 };
 
 Calculadora.apretarBotones();
 Calculadora.vistaPantalla();
+
+
+/*
+  operadores: function(){
+    var teclaRaiz = document.getElementById("raiz");
+    var teclaDivide = document.getElementById("dividido");
+    var teclaPor = document.getElementById("por");
+    var teclaMenos = document.getElementById("menos");
+    var teclaIgual = document.getElementById("igual");
+    var teclaMas = document.getElementById("mas");
+
+    var operandoA = "", operandoB = "", operacion = "",
+    resultadoTemp = this.resultado;
+
+    teclaIgual = "";
+
+    teclaMas.addEventListener('click', function(){
+      operandoA = resultadoTemp;
+      this.resultado = "";
+      operacion = "+";
+    })
+
+
+  },
+  */
+
+
 /*
 if (resultado.textContent == 0) {
   resultado.textContent = resultado.textContent + ".";
