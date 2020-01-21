@@ -118,80 +118,160 @@ var Calculadora = {
       }
     })
 
+    var operandoA = "";
+    var operandoB = "";
+    var operacion = "";
+
+    teclaMas.addEventListener('click', function(){
+      operacion = "mas";
+      if (resultado.textContent == "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "0";
+      } else if (resultado.textContent != "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+      } else if (resultado.textContent != "" && operandoA != "" && operandoB != "") {
+        operandoA = resultado.textContent;
+        operandoB = "";
+        resultado.textContent = "";
+      }
+
+    })
+    teclaMenos.addEventListener('click', function(){
+      operacion = "menos";
+      if (resultado.textContent == "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "0";
+      } else if (resultado.textContent != "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+      } else if (resultado.textContent != "" && operandoA != "" && operandoB != "") {
+        operandoA = resultado.textContent;
+        operandoB = "";
+        resultado.textContent = "";
+      }
+
+    })
+    teclaPor.addEventListener('click', function(){
+      operacion = "por";
+      if (resultado.textContent == "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "0";
+      } else if (resultado.textContent != "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+      } else if (resultado.textContent != "" && operandoA != "" && operandoB != "") {
+        operandoA = resultado.textContent;
+        operandoB = "";
+        resultado.textContent = "";
+      }
+    })
+    teclaDivide.addEventListener('click', function(){
+      operacion = "dividir";
+      if (resultado.textContent == "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "0";
+      } else if (resultado.textContent != "0" && operandoA == "") {
+        operandoA = resultado.textContent;
+        resultado.textContent = "";
+      } else if (resultado.textContent != "" && operandoA != "" && operandoB != "") {
+        operandoA = resultado.textContent;
+        operandoB = "";
+        resultado.textContent = "";
+      }
+    })
+
+    teclaIgual.addEventListener('click', function(){
+      if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "mas") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) + Number(operandoB)
+        operandoA = resultado.textContent;
+      }else if (resultado.textContent != "" && operandoB != "" && operacion == "mas") {
+        operandoA = resultado.textContent;
+        resultado.textContent = Number(operandoA) + Number(operandoB);
+      }
+      else if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "menos") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) - Number(operandoB)
+        operandoA = resultado.textContent;
+      }else if (resultado.textContent != "" && operandoB != "" && operacion == "menos") {
+        operandoA = resultado.textContent;
+        resultado.textContent = Number(operandoA) - Number(operandoB);
+      }
+      else if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "por") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) * Number(operandoB)
+        operandoA = resultado.textContent;
+      }else if (resultado.textContent != "" && operandoB != "" && operacion == "por") {
+        operandoA = resultado.textContent;
+        resultado.textContent = Number(operandoA) * Number(operandoB);
+      }
+      else if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "dividir") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) / Number(operandoB)
+        operandoA = resultado.textContent;
+      }else if (resultado.textContent != "" && operandoB != "" && operacion == "dividir") {
+        operandoA = resultado.textContent;
+        resultado.textContent = Number(operandoA) / Number(operandoB);
+      }
+
+    })
+
     teclaOn.addEventListener('click', function limpiar(){
       resultado.textContent = "0";
+      operandoA = "";
+      operandoB = "";
+      operacion = "";
     })
     teclaSigno.addEventListener('click', function(){
       resultado.textContent = -resultado.textContent;
     })
 
-    var operandoA = "";
-    var operandoB = "";
-    var operacion = "";
-    var resultadoTemp = resultado.textContent;
-
-    teclaMas.addEventListener('click', function(){
-      if (resultado.textContent != "0") {
-        operandoA = resultado.textContent;
-        resultado.textContent = "";
-        operacion = "mas";
-      }
-    })
-    teclaMenos.addEventListener('click', function(){
-      if (resultado.textContent != "0") {
-        operandoA = resultado.textContent;
-        resultado.textContent = "";
-        operacion = "menos";
-      }
-    })
-    teclaPor.addEventListener('click', function(){
-      if (resultado.textContent != "0") {
-        operandoA = resultado.textContent;
-        resultado.textContent = "";
-        operacion = "por";
-      }
-    })
-    teclaDivide.addEventListener('click', function(){
-      if (resultado.textContent != "0") {
-        operandoA = resultado.textContent;
-        resultado.textContent = "";
-        operacion = "dividir";
-      }
-    })
-
-    teclaIgual.addEventListener('click', function(){
-      if (resultado.textContent === "0") {
-        resultado.textContent = "0";
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "mas") {
-        operandoB = resultado.textContent;
-        resultado.textContent = Number(operandoA) + Number(operandoB);
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "mas") {
-        resultado.textContent = Number(resultado.textContent) + Number(operandoB);
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "menos") {
-        operandoB = resultado.textContent;
-        resultado.textContent = Number(operandoA) - Number(operandoB);
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "menos") {
-        resultado.textContent = Number(resultado.textContent) - Number(operandoB);
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "por") {
-        operandoB = resultado.textContent;
-        resultado.textContent = Number(operandoA) * Number(operandoB);
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "por") {
-        resultado.textContent = Number(resultado.textContent) * Number(operandoB);
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB === "" && operacion === "dividir") {
-        operandoB = resultado.textContent;
-        resultado.textContent = Number(operandoA) / Number(operandoB);
-      }else if (resultado.textContent != "" && operandoA != "0" && operandoB != "" && operacion === "dividir") {
-        resultado.textContent = Number(resultado.textContent) / Number(operandoB);
-      }
-
-    })
-
   },
+
+  finDisplay: function(){
+    var x = this.resultado.textContent;
+    for (var i = 0; i <= x.length; i++) {
+      if (i==8) {
+        break;
+      }
+      this.resultado.textContent =
+    }
+  }
 
 };
 
 Calculadora.apretarBotones();
 Calculadora.vistaPantalla();
+Calculadora.finDisplay();
+
+
+    /*teclaIgual.addEventListener('click', function(){
+      if (resultado.textContent == "0" && operandoA == "") {
+        resultado.textContent = "0";
+      }
+      else if (resultado.textContent == "0" && operandoA != "" && operacion == "mas") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) + Number(operandoB);
+      }
+      else if (resultado.textContent != "0" && operandoA != "" && operacion == "mas") {
+        operandoB = resultado.textContent;
+        resultado.textContent = Number(operandoA) + Number(operandoB);
+      }
+    })*/
+
+
+    /*teclaIgual.addEventListener('click', function(){
+if (resultado.textContent == "0") {
+resultado.textContent = "0";
+}else if (resultado.textContent != "0" && operacion == "mas") {
+operandoB = resultado.textContent;
+resultado.textContent = Number(operandoA) + Number(operandoB);
+}
+})*/
+
+
+
 
 
 /*
