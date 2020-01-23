@@ -185,70 +185,70 @@ var Calculadora = {
           var resultadoTemp = "0";
           if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "mas") {
             operandoB = resultado.textContent;
-            resultadoTemp = (Number(operandoA) + Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) + parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           }else if (resultado.textContent != "" && operandoB != "" && operacion == "mas") {
             operandoA = resultado.textContent;
-            resultadoTemp = (Number(operandoA) + Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) + parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           }
           else if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "menos") {
             operandoB = resultado.textContent;
-            resultadoTemp = (Number(operandoA) - Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) - parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           }else if (resultado.textContent != "" && operandoB != "" && operacion == "menos") {
             operandoA = resultado.textContent;
-            resultadoTemp = (Number(operandoA) - Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) - parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           }
           else if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "por") {
             operandoB = resultado.textContent;
-            resultadoTemp = (Number(operandoA) * Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) * parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           }else if (resultado.textContent != "" && operandoB != "" && operacion == "por") {
             operandoA = resultado.textContent;
-            resultadoTemp = (Number(operandoA) * Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) * parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           }
           else if (resultado.textContent != "" && operandoA != "" && operandoB == "" && operacion == "dividir") {
             operandoB = resultado.textContent;
-            resultadoTemp = (Number(operandoA) / Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) / parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           }else if (resultado.textContent != "" && operandoB != "" && operacion == "dividir") {
             operandoA = resultado.textContent;
-            resultadoTemp = (Number(operandoA) / Number(operandoB)).toString();
-            if (resultadoTemp < "100000000"){
+            resultadoTemp = (parseFloat(operandoA) / parseFloat(operandoB));
+            if (resultadoTemp < 100000000){
               resultado.textContent = resultadoTemp;
             }else{
-              resultado.textContent = resultadoTemp.toString().substring(0, 8);
+              resultado.textContent = resultadoTemp.toPrecision(8);
             }
           };
       })
